@@ -1,0 +1,899 @@
+<html><head><base href="https://papizzas.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Papizza's - Pizzeria al corte</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+  :root {
+    --italian-green: #009246;
+    --italian-white: #ffffff;
+    --italian-red: #ce2b37;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+    color: var(--italian-white);
+  }
+
+  header {
+    background-color: var(--italian-green);
+    color: var(--italian-white);
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    max-width: 300px; /* Increased from 200px */
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: contain;
+  }
+
+  h1, h2 {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+    color: var(--italian-red);
+    margin: 30px 0 20px;
+  }
+
+  #pide-tu-pizza h2 {
+    font-size: 2.5em;
+    color: var(--italian-red);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+  }
+
+  .order-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  .order-option {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    width: 45%;
+  }
+
+  .order-option h3 {
+    color: var(--italian-red);
+    margin-bottom: 10px;
+  }
+
+  nav {
+    background-color: var(--italian-red);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: var(--italian-white);
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav ul li {
+    margin: 5px 15px;
+  }
+
+  nav ul li a {
+    color: var(--italian-white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: #FFD700;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .menu-section {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0 0 20px;
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+
+  .menu-section h2 {
+    margin: 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--italian-white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0 0 20px;
+    border-radius: 8px 8px 0 0;
+    max-height: 300px;
+  }
+
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+
+  .menu-item-info {
+    flex: 1;
+  }
+
+  .menu-item h3 {
+    color: var(--italian-white);
+    margin: 0 0 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-item p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  .price {
+    color: var(--italian-green);
+    font-weight: bold;
+    white-space: nowrap;
+    margin-left: 10px;
+  }
+
+  .contact-info {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .contact-info p {
+    margin: 5px 0;
+  }
+
+  .hours {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  .hours h3 {
+    color: var(--italian-red);
+    margin-top: 0;
+  }
+
+  .hours p {
+    margin: 5px 0;
+  }
+
+  footer {
+    background-color: var(--italian-green);
+    color: var(--italian-white);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+  }
+
+  .language-selector {
+    margin-top: 10px;
+  }
+
+  .lang-btn {
+    background-color: var(--italian-white);
+    color: var(--italian-green);
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .lang-btn:hover, .lang-btn.active {
+    background-color: var(--italian-red);
+    color: var(--italian-white);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    h2 {
+      font-size: 1.8em;
+    }
+
+    .menu-toggle {
+      display: block;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav ul {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul.show {
+      display: flex;
+    }
+
+    nav ul li {
+      margin: 10px 0;
+    }
+
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 5px 0;
+    }
+
+    .menu-item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .section-image {
+      height: 150px;
+      max-height: none;
+    }
+
+    .logo {
+      max-width: 250px; /* Increased from 200px */
+    }
+
+    .order-options {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .order-option {
+      width: 80%;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    .logo {
+      max-width: 200px; /* Increased from 150px */
+    }
+
+    .section-image {
+      height: 120px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .section-image {
+      max-height: 250px;
+    }
+  }
+
+  #alergenos {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--italian-white);
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #alergenos h2 {
+    color: var(--italian-red) !important;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    margin: 0;
+  }
+
+  #alergenos .section-image {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    margin-bottom: 0;
+  }
+
+  #alergenos .allergen-info {
+    padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    #alergenos .section-image {
+      height: auto;
+    }
+  }
+
+  .menu-item img {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .menu-item {
+      text-align: center;
+    }
+  }
+
+  .glovo-logo {
+    width: 50px;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .glovo-logo {
+      width: 40px;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Papizza's logo" class="logo">
+    <div class="language-selector">
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+    </div>
+  </header>
+
+  <nav>
+    <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul>
+      <li><a href="#pizzas" data-translate="pizzas">Pizzas</a></li>
+      <li><a href="#bebidas" data-translate="bebidas">Bebidas</a></li>
+      <li><a href="#horarios" data-translate="horarios">Horarios</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <section id="pide-tu-pizza" class="contact-info">
+      <h2 data-translate="pide-tu-pizza">PIDE TU PIZZA!</h2>
+      <div class="order-options">
+        <div class="order-option">
+          <h3 data-translate="recoger">Recoger</h3>
+          <p>633 22 02 24</p>
+        </div>
+        <div class="order-option">
+          <h3 data-translate="domicilio">A Domicilio</h3>
+          <a href="https://glovoapp.com/es/es/las-chafiras/cristian-el-pizzero-las-chafiras/" target="_blank">
+          <img src="glovo.png" alt="Glovo logo" class="glovo-logo">
+        </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="pizzas" class="menu-section">
+      <h2 data-translate="pizzas">Pizzas</h2>
+      <img src="/a/ff4c9345-e1f6-4550-a99c-f846069653a7" alt="Variedad de pizzas italianas" class="section-image" width="1200" height="200">
+      <div style="padding: 0 20px;">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>TRUFONA <span class="price">€11,00</span></h3>
+            <p data-translate="TRUFONA-desc">Mozzarella fior di latte, crema de trufa, jamón cocido, huevo y champiñones.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>TRICOLORE <span class="price">€10,00</span></h3>
+            <p data-translate="TRICOLORE-desc">Tomate, mozzarella fior di latte, mozzarella de búfala, crema de pistacho, tomates secos y escamas de parmesano.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>MONTE <span class="price">€10,00</span></h3>
+            <p data-translate="MONTE-desc">Mozzarella fior di latte, champiñones, gorgonzola y jamón de parma.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>CALABRESE <span class="price">€10,00</span></h3>
+            <p data-translate="CALABRESE-desc">Tomate, mozzarella fior di latte, nduja calabrese, alcachofas y escamas de parmesano.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>FOCACCIA <span class="price">€4,00</span></h3>
+            <p data-translate="FOCACCIA-desc">Aceite EVO, escamas de sal y romero.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>VALLE <span class="price">€11,00</span></h3>
+            <p data-translate="VALLE-desc">Mozzarella fior di latte, crema de trufa, pancetta, gorgonzola, champiñones y huevo.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>CARBONARA <span class="price">€8,50</span></h3>
+            <p data-translate="CARBONARA-desc">Mozzarella fior di latte, pimienta árabiatta, pancetta.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>ROBY <span class="price">€8,50</span></h3>
+            <p data-translate="ROBY-desc">Mozzarella fior di latte, pimienta árabiatta, pancetta, salchicha italiana, huevo.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>MARGHERITA <span class="price">€7,00</span></h3>
+            <p data-translate="MARGHERITA-desc">Tomate, mozzarella fior di latte y aceite EVO.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>TOMATE Y CHAMPIÑONES <span class="price">€8,00</span></h3>
+            <p data-translate="TOMATE Y CHAMPIÑONES-desc">Tomate, mozzarella fior di latte, champiñones y aceite EVO.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>PEPPERONI <span class="price">€8,50</span></h3>
+            <p data-translate="PEPPERONI-desc">Tomate, mozzarella fior di latte y pepperoni.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>4 STAGIONI <span class="price">€8,50</span></h3>
+            <p data-translate="4 STAGIONI-desc">Tomate, mozzarella fior di latte, champiñones, aceitunas negras, jamón cocido y alcachofas.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>AL FOR MAGGI <span class="price">€8,50</span></h3>
+            <p data-translate="AL FOR MAGGI-desc">Tomate, mozzarella fior di latte, gorgonzola, scamorza y provola.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>VEGGIANA <span class="price">€8,50</span></h3>
+            <p data-translate="VEGGIANA-desc">Tomate, mozzarella fior di latte, berenjenas, calabacín, cebolla y espinacas.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>DIAVOLA <span class="price">€8,50</span></h3>
+            <p data-translate="DIAVOLA-desc">Tomate, mozzarella fior di latte, salami picante y albahaca.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>BORBOCO <span class="price">€8,00</span></h3>
+            <p data-translate="BORBOCO-desc">Tomate, mozzarella fior di latte, berenjenas y albahaca.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>HAWAI <span class="price">€8,00</span></h3>
+            <p data-translate="HAWAI-desc">Tomate, mozzarella fior di latte, jamón cocido y piña.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>NAPOLITANA <span class="price">€8,50</span></h3>
+            <p data-translate="NAPOLITANA-desc">Tomate, mozzarella fior di latte, anchoas, aceitunas negras y alcaparras.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>CLÁSICA <span class="price">€8,50</span></h3>
+            <p data-translate="CLÁSICA-desc">Tomate, mozzarella fior di latte, atún y cebolla.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>CALZONE <span class="price">€8,50</span></h3>
+            <p data-translate="CALZONE-desc">Tomate, mozzarella fior di latte, jamón cocido y champiñones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bebidas" class="menu-section">
+      <h2 data-translate="bebidas">Bebidas</h2>
+      <img src="/a/refrescos-banner.jpg" alt="Variedad de bebidas" class="section-image" width="1200" height="200">
+      <div style="padding: 0 20px;">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>REFRESCOS <span class="price">€1,70</span></h3>
+            <p data-translate="REFRESCOS-desc">Variedad de refrescos carbonatados.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>DORADA <span class="price">€1,70</span></h3>
+            <p data-translate="DORADA-desc">Cerveza Dorada.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>ESTRELLA GALICIA <span class="price">€2,00</span></h3>
+            <p data-translate="ESTRELLA GALICIA-desc">Cerveza Estrella Galicia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="horarios" class="hours">
+      <h3 data-translate="horarios">Horarios:</h3>
+      <p data-translate="miercoles-domingo">De miércoles a domingo: 5:00 - 23:00</p>
+      <p data-translate="lunes-martes-cerrado">Lunes y martes cerrado</p>
+    </section>
+
+    <section id="alergenos" class="menu-section">
+      <h2 data-translate="aviso-alergenos" style="color: var(--italian-red);">Aviso de Alérgenos</h2>
+      <div class="allergen-info" style="padding: 0 20px;">
+        <p data-translate="texto-alergenos">Nuestros productos pueden contener alérgenos. Por favor, informe a nuestro personal sobre cualquier alergia o intolerancia alimentaria antes de realizar su pedido.</p>
+      </div>
+      <img src="images/alergenos.png" alt="Variedad de alergenos comunes en alimentos" class="section-image" width="1200" height="200">
+    </section>
+  </div>
+
+  <footer>
+    <p data-translate="direccion">Carretera General del Sur TF-28 número 171, Valle De San Lorenzo, Canarias, Spain 38626</p>
+  </footer>
+
+  <script>
+    const translations = {
+      es: {
+        "pizzas": "Pizzas",
+        "bebidas": "Bebidas",
+        "horarios": "Horarios:",
+        "miercoles-domingo": "De miércoles a domingo: 5:00 - 23:00",
+        "lunes-martes-cerrado": "Lunes y martes cerrado",
+        "pide-tu-pizza": "PIDE TU PIZZA!",
+        "recoger": "Recoger",
+        "domicilio": "A Domicilio",
+        "al-trozo": "€ al trozo",
+        "cada-uno": "€ cada uno",
+        "tomate": "tomate",
+        "mozzarella": "mozzarella",
+        "jamón": "jamón",
+        "champiñón": "champiñón",
+        "atún": "atún",
+        "cebolla": "cebolla",
+        "alcachofa": "alcachofa",
+        "salami-picante": "salami picante",
+        "berenjena": "berenjena",
+        "calabacín": "calabacín",
+        "salchicha": "salchicha",
+        "brócoli": "brócoli",
+        "papas": "papas",
+        "bacon": "bacon",
+        "gorgonzola": "gorgonzola",
+        "edamer": "edamer",
+        "gouda": "gouda",
+        "nata": "nata",
+        "pimientos": "pimientos",
+        "espárragos": "espárragos",
+        "grelos": "grelos",
+        "würstel": "würstel",
+        "lechuga": "lechuga",
+        "gambas": "gambas",
+        "salsa-rosa": "salsa rosa",
+        "pimienta-dulce": "pimienta dulce",
+        "jamón-serrano": "jamón serrano",
+        "rúcula": "rúcula",
+        "todos-los-dias": "Todos los días de 12:30 a 22:30 h.",
+        "domingo": "Domingo de 17 a 22:30 h.",
+        "lunes-cerrado": "Lunes cerrado",
+        "direccion": "Carretera General del Sur TF-28 número 171, Valle De San Lorenzo, Canarias, Spain 38626",
+        "ingredientes-especiales": "Ingredientes especiales del día",
+        "refresco-cola": "Refresco carbonatado de cola",
+        "refresco-naranja": "Refresco carbonatado de naranja",
+        "refresco-lima-limon": "Refresco carbonatado de lima-limón",
+        "agua-natural": "Agua natural sin gas",
+        "aviso-alergenos": "Aviso de Alérgenos",
+        "texto-alergenos": "Nuestros productos pueden contener alérgenos. Por favor, informe a nuestro personal sobre cualquier alergia o intolerancia alimentaria antes de realizar su pedido.",
+        "TRUFONA-desc": "Mozzarella fior di latte, crema de trufa, jamón cocido, huevo y champiñones.",
+        "TRICOLORE-desc": "Tomate, mozzarella fior di latte, mozzarella de búfala, crema de pistacho, tomates secos y escamas de parmesano.",
+        "MONTE-desc": "Mozzarella fior di latte, champiñones, gorgonzola y jamón de parma.",
+        "CALABRESE-desc": "Tomate, mozzarella fior di latte, nduja calabrese, alcachofas y escamas de parmesano.",
+        "FOCACCIA-desc": "Aceite EVO, escamas de sal y romero.",
+        "VALLE-desc": "Mozzarella fior di latte, crema de trufa, pancetta, gorgonzola, champiñones y huevo.",
+        "CARBONARA-desc": "Mozzarella fior di latte, pimienta árabiatta, pancetta.",
+        "ROBY-desc": "Mozzarella fior di latte, pimienta árabiatta, pancetta, salchicha italiana, huevo.",
+        "MARGHERITA-desc": "Tomate, mozzarella fior di latte y aceite EVO.",
+        "TOMATE Y CHAMPIÑONES-desc": "Tomate, mozzarella fior di latte, champiñones y aceite EVO.",
+        "PEPPERONI-desc": "Tomate, mozzarella fior di latte y pepperoni.",
+        "4 STAGIONI-desc": "Tomate, mozzarella fior di latte, champiñones, aceitunas negras, jamón cocido y alcachofas.",
+        "AL FOR MAGGI-desc": "Tomate, mozzarella fior di latte, gorgonzola, scamorza y provola.",
+        "VEGGIANA-desc": "Tomate, mozzarella fior di latte, berenjenas, calabacín, cebolla y espinacas.",
+        "DIAVOLA-desc": "Tomate, mozzarella fior di latte, salami picante y albahaca.",
+        "BORBOCO-desc": "Tomate, mozzarella fior di latte, berenjenas y albahaca.",
+        "HAWAI-desc": "Tomate, mozzarella fior di latte, jamón cocido y piña.",
+        "NAPOLITANA-desc": "Tomate, mozzarella fior di latte, anchoas, aceitunas negras y alcaparras.",
+        "CLÁSICA-desc": "Tomate, mozzarella fior di latte, atún y cebolla.",
+        "CALZONE-desc": "Tomate, mozzarella fior di latte, jamón cocido y champiñones.",
+        "REFRESCOS-desc": "Variedad de refrescos carbonatados.",
+        "DORADA-desc": "Cerveza Dorada.",
+        "ESTRELLA GALICIA-desc": "Cerveza Estrella Galicia."
+      },
+      en: {
+        "pizzas": "Pizzas",
+        "bebidas": "Drinks",
+        "horarios": "Opening Hours:",
+        "miercoles-domingo": "Wednesday to Sunday: 5:00 AM - 11:00 PM",
+        "lunes-martes-cerrado": "Closed on Mondays and Tuesdays",
+        "pide-tu-pizza": "ORDER YOUR PIZZA!",
+        "recoger": "Pick Up",
+        "domicilio": "Delivery",
+        "al-trozo": "€ per slice",
+        "cada-uno": "€ each",
+        "tomate": "tomato",
+        "mozzarella": "mozzarella",
+        "jamón": "ham",
+        "champiñón": "mushroom",
+        "atún": "tuna",
+        "cebolla": "onion",
+        "alcachofa": "artichoke",
+        "salami-picante": "spicy salami",
+        "berenjena": "eggplant",
+        "calabacín": "zucchini",
+        "salchicha": "sausage",
+        "brócoli": "broccoli",
+        "papas": "potatoes",
+        "bacon": "bacon",
+        "gorgonzola": "gorgonzola",
+        "edamer": "edam",
+        "gouda": "gouda",
+        "nata": "cream",
+        "pimientos": "peppers",
+        "espárragos": "asparagus",
+        "grelos": "turnip greens",
+        "würstel": "frankfurter",
+        "lechuga": "lettuce",
+        "gambas": "shrimp",
+        "salsa-rosa": "cocktail sauce",
+        "pimienta-dulce": "sweet pepper",
+        "jamón-serrano": "cured ham",
+        "rúcula": "arugula",
+        "todos-los-dias": "Every day from 12:30 to 22:30",
+        "domingo": "Sunday from 17:00 to 22:30",
+        "lunes-cerrado": "Closed on Mondays",
+        "direccion": "Carretera General del Sur TF-28 number 171, Valle De San Lorenzo, Canary Islands, Spain 38626",
+        "ingredientes-especiales": "Special ingredients of the day",
+        "refresco-cola": "Carbonated cola drink",
+        "refresco-naranja": "Carbonated orange drink",
+        "refresco-lima-limon": "Carbonated lemon-lime drink",
+        "agua-natural": "Still natural water",
+        "aviso-alergenos": "Allergen Warning",
+        "texto-alergenos": "Our products may contain allergens. Please inform our staff about any food allergies or intolerances before placing your order.",
+        "TRUFONA-desc": "Fior di latte mozzarella, truffle cream, cooked ham, egg, and mushrooms.",
+        "TRICOLORE-desc": "Tomato, fior di latte mozzarella, buffalo mozzarella, pistachio cream, sun-dried tomatoes, and parmesan flakes.",
+        "MONTE-desc": "Fior di latte mozzarella, mushrooms, gorgonzola, and Parma ham.",
+        "CALABRESE-desc": "Tomato, fior di latte mozzarella, Calabrian nduja, artichokes, and parmesan flakes.",
+        "FOCACCIA-desc": "EVO oil, salt flakes, and rosemary.",
+        "VALLE-desc": "Fior di latte mozzarella, truffle cream, pancetta, gorgonzola, mushrooms, and egg.",
+        "CARBONARA-desc": "Fior di latte mozzarella, arrabbiata pepper, pancetta.",
+        "ROBY-desc": "Fior di latte mozzarella, arrabbiata pepper, pancetta, Italian sausage, egg.",
+        "MARGHERITA-desc": "Tomato, fior di latte mozzarella, and EVO oil.",
+        "TOMATE Y CHAMPIÑONES-desc": "Tomato, fior di latte mozzarella, mushrooms, and EVO oil.",
+        "PEPPERONI-desc": "Tomato, fior di latte mozzarella, and pepperoni.",
+        "4 STAGIONI-desc": "Tomato, fior di latte mozzarella, mushrooms, black olives, cooked ham, and artichokes.",
+        "AL FOR MAGGI-desc": "Tomato, fior di latte mozzarella, gorgonzola, scamorza, and provola.",
+        "VEGGIANA-desc": "Tomato, fior di latte mozzarella, eggplant, zucchini, onion, and spinach.",
+        "DIAVOLA-desc": "Tomato, fior di latte mozzarella, spicy salami, and basil.",
+        "BORBOCO-desc": "Tomato, fior di latte mozzarella, eggplant, and basil.",
+        "HAWAI-desc": "Tomato, fior di latte mozzarella, cooked ham, and pineapple.",
+        "NAPOLITANA-desc": "Tomato, fior di latte mozzarella, anchovies, black olives, and capers.",
+        "CLÁSICA-desc": "Tomato, fior di latte mozzarella, tuna, and onion.",
+        "CALZONE-desc": "Tomato, fior di latte mozzarella, cooked ham, and mushrooms.",
+        "REFRESCOS-desc": "Variety of carbonated soft drinks.",
+        "DORADA-desc": "Dorada beer.",
+        "ESTRELLA GALICIA-desc": "Estrella Galicia beer."
+      },
+      de: {
+        "pizzas": "Pizzen",
+        "bebidas": "Getränke",
+        "horarios": "Öffnungszeiten:",
+        "miercoles-domingo": "Mittwoch bis Sonntag: 5:00 - 23:00 Uhr",
+        "lunes-martes-cerrado": "Montags und Dienstags geschlossen",
+        "pide-tu-pizza": "BESTELLE DEINE PIZZA!",
+        "recoger": "Abholen",
+        "domicilio": "Lieferung",
+        "al-trozo": "€ pro Stück",
+        "cada-uno": "€ pro Stück",
+        "tomate": "Tomate",
+        "mozzarella": "Mozzarella",
+        "jamón": "Schinken",
+        "champiñón": "Champignon",
+        "atún": "Thunfisch",
+        "cebolla": "Zwiebel",
+        "alcachofa": "Artischocke",
+        "salami-picante": "scharfe Salami",
+        "berenjena": "Aubergine",
+        "calabacín": "Zucchini",
+        "salchicha": "Wurst",
+        "brócoli": "Brokkoli",
+        "papas": "Kartoffeln",
+        "bacon": "Speck",
+        "gorgonzola": "Gorgonzola",
+        "edamer": "Edamer",
+        "gouda": "Gouda",
+        "nata": "Sahne",
+        "pimientos": "Paprika",
+        "espárragos": "Spargel",
+        "grelos": "Grünkohl",
+        "würstel": "Würstchen",
+        "lechuga": "Salat",
+        "gambas": "Garnelen",
+        "salsa-rosa": "Cocktailsauce",
+        "pimienta-dulce": "süßer Pfeffer",
+        "jamón-serrano": "Serrano-Schinken",
+        "rúcula": "Rucola",
+        "todos-los-dias": "Täglich von 12:30 bis 22:30 Uhr",
+        "domingo": "Sonntag von 17:00 bis 22:30 Uhr",
+        "lunes-cerrado": "Montags geschlossen",
+        "direccion": "Carretera General del Sur TF-28 Nummer 171, Valle De San Lorenzo, Kanarische Inseln, Spanien 38626",
+        "ingredientes-especiales": "Spezielle Zutaten des Tages",
+        "refresco-cola": "Kohlensäurehaltiges Cola-Getränk",
+        "refresco-naranja": "Kohlensäurehaltiges Orangengetränk",
+        "refresco-lima-limon": "Kohlensäurehaltiges Zitrone-Limette-Getränk",
+        "agua-natural": "Stilles Naturwasser",
+        "aviso-alergenos": "Allergen-Warnung",
+        "texto-alergenos": "Unsere Produkte können Allergene enthalten. Bitte informieren Sie unser Personal über Lebensmittel allergien oder -unverträglichkeiten, bevor Sie Ihre Bestellung aufgeben.",
+        "TRUFONA-desc": "Fior di Latte Mozzarella, Trüffelcreme, gekochter Schinken, Ei und Champignons.",
+        "TRICOLORE-desc": "Tomate, Fior di Latte Mozzarella, Büffelmozzarella, Pistaziencreme, getrocknete Tomaten und Parmesanflocken.",
+        "MONTE-desc": "Fior di Latte Mozzarella, Champignons, Gorgonzola und Parmaschinken.",
+        "CALABRESE-desc": "Tomate, Fior di Latte Mozzarella, kalabrische Nduja, Artischocken und Parmesanflocken.",
+        "FOCACCIA-desc": "Natives Olivenöl extra, Salzflocken und Rosmarin.",
+        "VALLE-desc": "Fior di Latte Mozzarella, Trüffelcreme, Pancetta, Gorgonzola, Champignons und Ei.",
+        "CARBONARA-desc": "Fior di Latte Mozzarella, Arrabbiata-Pfeffer, Pancetta.",
+        "ROBY-desc": "Fior di Latte Mozzarella, Arrabbiata-Pfeffer, Pancetta, italienische Wurst, Ei.",
+        "MARGHERITA-desc": "Tomate, Fior di Latte Mozzarella und natives Olivenöl extra.",
+        "TOMATE Y CHAMPIÑONES-desc": "Tomate, Fior di Latte Mozzarella, Champignons und natives Olivenöl extra.",
+        "PEPPERONI-desc": "Tomate, Fior di Latte Mozzarella und Pepperoni.",
+        "4 STAGIONI-desc": "Tomate, Fior di Latte Mozzarella, Champignons, schwarze Oliven, gekochter Schinken und Artischocken.",
+        "AL FOR MAGGI-desc": "Tomate, Fior di Latte Mozzarella, Gorgonzola, Scamorza und Provola.",
+        "VEGGIANA-desc": "Tomate, Fior di Latte Mozzarella, Auberginen, Zucchini, Zwiebeln und Spinat.",
+        "DIAVOLA-desc": "Tomate, Fior di Latte Mozzarella, scharfe Salami und Basilikum.",
+        "BORBOCO-desc": "Tomate, Fior di Latte Mozzarella, Auberginen und Basilikum.",
+        "HAWAI-desc": "Tomate, Fior di Latte Mozzarella, gekochter Schinken und Ananas.",
+        "NAPOLITANA-desc": "Tomate, Fior di Latte Mozzarella, Sardellen, schwarze Oliven und Kapern.",
+        "CLÁSICA-desc": "Tomate, Fior di Latte Mozzarella, Thunfisch und Zwiebeln.",
+        "CALZONE-desc": "Tomate, Fior di Latte Mozzarella, gekochter Schinken und Champignons.",
+        "REFRESCOS-desc": "Auswahl an kohlensäurehaltigen Erfrischungsgetränken.",
+        "DORADA-desc": "Dorada Bier.",
+        "ESTRELLA GALICIA-desc": "Estrella Galicia Bier."
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll('.menu-item-info p').forEach(element => {
+        const itemName = element.previousElementSibling.textContent.split(' ')[0];
+        const descKey = `${itemName}-desc`;
+        if (translations[lang] && translations[lang][descKey]) {
+          element.textContent = translations[lang][descKey];
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('nav ul');
+
+      menuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('show');
+      });
+
+      const menuItems = document.querySelectorAll('.menu-item');
+      menuItems.forEach(item => {
+        item.addEventListener('mouseover', function() {
+          this.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+        });
+        item.addEventListener('mouseout', function() {
+          this.style.backgroundColor = 'transparent';
+        });
+      });
+
+      const navLinks = document.querySelectorAll('nav ul li a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navMenu.classList.remove('show');
+        });
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          changeLanguage(lang);
+        });
+      });
+
+      changeLanguage('es');
+    });
+  </script>
+</body></html>
